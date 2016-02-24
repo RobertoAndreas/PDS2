@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Servlet")
-public class Servlet extends HttpServlet {
+@WebServlet("/ClienteServlet")
+public class ClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public Servlet() {
+    public ClienteServlet() {
         super();
         
     }

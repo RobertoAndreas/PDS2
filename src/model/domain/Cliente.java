@@ -46,8 +46,6 @@ public class Cliente implements Serializable {
 	@Column(name="DS_TELEFONE")
 	private String telefone;
 	
-	@Column(name="DS_FAX")
-	private String fax;
 
 	public Cliente() {
 		super();
@@ -117,13 +115,6 @@ public class Cliente implements Serializable {
 		this.telefone = telefone;
 	}
 
-	public String getFax() {
-		return fax;
-	}
-
-	public void setFax(String fax) {
-		this.fax = fax;
-	}
 
 	@Override
 	public int hashCode() {

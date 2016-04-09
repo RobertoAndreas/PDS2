@@ -13,31 +13,31 @@ import javax.persistence.Table;
 
 
 	@Entity
-	@Table(name = "tb_produto")
-	public class Produto implements Serializable {
+	@Table(name = "tb_bicicleta")
+	public class Bicicleta implements Serializable {
 
 		private static final long serialVersionUID = 1L;
 
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		@Column(name = "cd_produto")
+		@Column(name = "cd_bicicleta")
 		private Integer codigo;
 
-		@Column(name = "nm_produto")
-		private String nome;
-
 		@ManyToOne
-		@JoinColumn(name = "cd_categoria", referencedColumnName = "cd_categoria")
-		private Categoria categoria;
+		@JoinColumn(name = "cd_aluguel", referencedColumnName = "cd_aluguel")
+		private DetalheAluguel aluguel;
 		
-		@Column(name="vl_preco")
+		@Column(name="vl_preco_diario")
 		private Double preco;
 		
-		@Column(name="qt_estoque")
+		@Column(name="vl_preco_mensal")
+		private Double precoMensal;
+		
+		@Column(name="vl_preco_anual")
+		private Double precoAnual;
+		
+		@Column(name="qt_disponivel")
 		private Integer quantidade;
 		
-		@Column(name="nm_imagem")
-		private String imagem;
-
 	
 }

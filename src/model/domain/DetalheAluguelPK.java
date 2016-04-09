@@ -10,7 +10,7 @@ public class DetalheAluguelPK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "cd_produto")
+	@Column(name = "cd_bicicleta")
 	private Integer codigoBicicleta;
 
 	public DetalheAluguelPK() {

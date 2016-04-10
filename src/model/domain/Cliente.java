@@ -28,9 +28,6 @@ public class Cliente implements Serializable {
 	@Column(name="NM_CLIENTE")
 	private String nome;
 	
-	@Column(name="DS_CARGO")
-	private String cargo;
-	
 	@Column(name="DS_ENDERECO")
 	private String endereco;
 	
@@ -65,14 +62,6 @@ public class Cliente implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getCargo() {
-		return cargo;
-	}
-
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
 	}
 
 	public String getEndereco() {

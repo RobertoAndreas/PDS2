@@ -1,14 +1,14 @@
 package model.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -23,9 +23,8 @@ import javax.persistence.Table;
 		@Column(name = "cd_bicicleta")
 		private Integer codigo;
 
-		@ManyToOne
-		@JoinColumn(name = "cd_aluguel", referencedColumnName = "cd_aluguel")
-		private DetalheAluguel aluguel;
+		@OneToMany(mappedBy="bicicleta")
+		private List<DetalheAluguel> aluguel;
 		
 		@Column(name="vl_preco_diario")
 		private Double preco;

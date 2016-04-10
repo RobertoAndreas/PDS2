@@ -47,7 +47,7 @@ public class DetalheAluguelPK implements Serializable {
 				return false;
 		} else if (!codigoBicicleta.equals(other.codigoBicicleta))
 			return false;
-		
+		       return true;
 	}
 
 }

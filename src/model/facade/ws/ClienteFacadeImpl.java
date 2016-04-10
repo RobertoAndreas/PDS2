@@ -2,6 +2,7 @@ package model.facade.ws;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 

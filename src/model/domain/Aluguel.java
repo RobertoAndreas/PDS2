@@ -12,22 +12,28 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TB_ALUGUEL")
+@Table(name = "tb_aluguel")
 public class Aluguel implements Serializable {
 
 	private static final long serialVersionUID = -4291797618210467834L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="NR_ALUGUEL")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "nr_aluguel")
 	private Integer numero;
-	
+
 	@ManyToOne
-	@JoinColumn(name="CD_BICICLETA",referencedColumnName="CD_BICICLETA")
+	@JoinColumn(name = "cd_bicicleta", referencedColumnName = "cd_bicicleta")
 	private Bicicleta bicicleta;
-	
-	@Column(name="TP_ALUGUEL")
-	private String tipo;
+
+	@Column(name = "vl_diario")
+	private String diario;
+
+	@Column(name = "vl_mensal")
+	private String mensal;
+
+	@Column(name = "vl_anual")
+	private String anual;
 
 	public Aluguel() {
 	}
@@ -48,12 +54,28 @@ public class Aluguel implements Serializable {
 		this.bicicleta = bicicleta;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getDiario() {
+		return diario;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setDiario(String diario) {
+		this.diario = diario;
+	}
+
+	public String getMensal() {
+		return mensal;
+	}
+
+	public void setMensal(String mensal) {
+		this.mensal = mensal;
+	}
+
+	public String getAnual() {
+		return anual;
+	}
+
+	public void setAnual(String anual) {
+		this.anual = anual;
 	}
 
 	@Override
@@ -80,6 +102,5 @@ public class Aluguel implements Serializable {
 			return false;
 		return true;
 	}
-	
 
 }

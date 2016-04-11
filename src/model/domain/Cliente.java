@@ -19,25 +19,25 @@ public class Cliente implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="CD_CLIENTE")
+	@Column(name="cd_cliente")
 	private Integer codigo;
 	
-	@Column(name="NM_CLIENTE")
+	@Column(name="nm_cliente")
 	private String nome;
 	
-	@Column(name="DS_ENDERECO")
+	@Column(name="ds_endereco")
 	private String endereco;
 	
-	@Column(name="DS_CIDADE")
+	@Column(name="ds_cidade")
 	private String cidade;
 	
-	@Column(name="DS_CEP")
+	@Column(name="ds_cep")
 	private String cep;
 
-	@Column(name="DS_PAIS")
+	@Column(name="ds_pais")
 	private String pais;
 	
-	@Column(name="DS_TELEFONE")
+	@Column(name="ds_telefone")
 	private String telefone;
 	
 

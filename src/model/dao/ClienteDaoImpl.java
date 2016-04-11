@@ -12,7 +12,7 @@ import model.domain.Cliente;
 
 public class ClienteDaoImpl implements ClienteDao {
 
-	@PersistenceContext(unitName = "SistemaEcommerce")
+	@PersistenceContext(unitName = "SistemaAlugaBicicletaPU")
 	private EntityManager entityManager;
 
 	@Override

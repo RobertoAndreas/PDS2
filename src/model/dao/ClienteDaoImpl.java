@@ -1,5 +1,6 @@
 package model.dao;
 
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -11,7 +12,7 @@ import model.domain.Cliente;
 
 public class ClienteDaoImpl implements ClienteDao {
 
-	@PersistenceContext(unitName = "SistemaAlugaBicicletaPU")
+	@PersistenceContext(unitName = "SistemaEcommerce")
 	private EntityManager entityManager;
 
 	@Override

@@ -14,10 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="TB_ALUGUEL")
 public class Aluguel implements Serializable {
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -4291797618210467834L;
 
 	@Id
@@ -26,8 +23,8 @@ public class Aluguel implements Serializable {
 	private Integer numero;
 	
 	@ManyToOne
-	@JoinColumn(name="CD_CLIENTE",referencedColumnName="CD_CLIENTE")
-	private Cliente cliente;
+	@JoinColumn(name="CD_BICICLETA",referencedColumnName="CD_BICICLETA")
+	private Bicicleta bicicleta;
 	
 	@Column(name="TP_ALUGUEL")
 	private String tipo;
@@ -43,12 +40,12 @@ public class Aluguel implements Serializable {
 		this.numero = numero;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public Bicicleta getBicicleta() {
+		return bicicleta;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setBicicleta(Bicicleta bicicleta) {
+		this.bicicleta = bicicleta;
 	}
 
 	public String getTipo() {

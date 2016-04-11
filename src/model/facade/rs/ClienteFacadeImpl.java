@@ -1,6 +1,5 @@
 package model.facade.rs;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;

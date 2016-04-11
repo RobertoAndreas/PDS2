@@ -28,6 +28,9 @@ public class Bicicleta implements Serializable {
 	@Column(name = "qt_disponivel")
 	private Integer quantidade;
 
+	@Column(name = "ds_marca")
+	private String marca;
+
 	public Bicicleta() {
 		super();
 	}
@@ -54,6 +57,14 @@ public class Bicicleta implements Serializable {
 
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
 	}
 
 	@Override

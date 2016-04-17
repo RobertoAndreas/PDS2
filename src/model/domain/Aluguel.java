@@ -1,16 +1,25 @@
 package model.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.transaction.Transactional;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
+@Transactional
+@XmlRootElement
 @Entity
 @Table(name = "tb_aluguel")
 public class Aluguel implements Serializable {
@@ -19,12 +28,18 @@ public class Aluguel implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "nr_aluguel")
-	private Integer numero;
+	@Column(name = "cd_aluguel")
+	private Integer codigo;
 
-	@ManyToOne
-	@JoinColumn(name = "cd_bicicleta", referencedColumnName = "cd_bicicleta")
-	private Bicicleta bicicleta;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "cd_cliente", referencedColumnName = "cd_cliente")
+	private Cliente cliente;
+	
+	@ManyToMany
+	@JoinTable(name="tb_item_aluguel", 
+			   joinColumns= @JoinColumn(name="cd_aluguel"), 
+			   inverseJoinColumns= @JoinColumn(name="cd_bicicleta"))
+	private List<Bicicleta> bicicletas;
 
 	@Column(name = "vl_diario")
 	private String diario;
@@ -36,22 +51,25 @@ public class Aluguel implements Serializable {
 	private String anual;
 
 	public Aluguel() {
+		super();
 	}
 
-	public Integer getNumero() {
-		return numero;
+	public Integer getCodigo() {
+		return codigo;
 	}
 
-	public void setNumero(Integer numero) {
-		this.numero = numero;
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
 
-	public Bicicleta getBicicleta() {
-		return bicicleta;
+
+	@XmlTransient
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setBicicleta(Bicicleta bicicleta) {
-		this.bicicleta = bicicleta;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public String getDiario() {
@@ -82,7 +100,7 @@ public class Aluguel implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		return result;
 	}
 
@@ -95,10 +113,10 @@ public class Aluguel implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Aluguel other = (Aluguel) obj;
-		if (numero == null) {
-			if (other.numero != null)
+		if (codigo == null) {
+			if (other.codigo != null)
 				return false;
-		} else if (!numero.equals(other.numero))
+		} else if (!codigo.equals(other.codigo))
 			return false;
 		return true;
 	}

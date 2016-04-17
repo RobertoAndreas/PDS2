@@ -8,9 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.transaction.Transactional;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@Transactional
+@XmlRootElement
 @Entity
 @Table(name = "tb_bicicleta")
 public class Bicicleta implements Serializable {
@@ -22,17 +28,25 @@ public class Bicicleta implements Serializable {
 	@Column(name = "cd_bicicleta")
 	private Integer codigo;
 
-	@OneToMany(mappedBy = "bicicleta")
-	private List<Aluguel> aluguel;
-
 	@Column(name = "qt_disponivel")
 	private Integer quantidade;
 
 	@Column(name = "ds_marca")
 	private String marca;
 
+	@ManyToMany
+	@JoinTable(name = "tb_item_aluguel", joinColumns = @JoinColumn(name = "cd_bicicleta"), inverseJoinColumns = @JoinColumn(name = "cd_aluguel"))
+	private List<Aluguel> alugueis;
+
 	public Bicicleta() {
 		super();
+	}
+
+	public Bicicleta(Integer codigo, Integer quantidade, String marca) {
+		super();
+		this.codigo = codigo;
+		this.quantidade = quantidade;
+		this.marca = marca;
 	}
 
 	public Integer getCodigo() {
@@ -41,14 +55,6 @@ public class Bicicleta implements Serializable {
 
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
-	}
-
-	public List<Aluguel> getAluguel() {
-		return aluguel;
-	}
-
-	public void setAluguel(List<Aluguel> aluguel) {
-		this.aluguel = aluguel;
 	}
 
 	public Integer getQuantidade() {

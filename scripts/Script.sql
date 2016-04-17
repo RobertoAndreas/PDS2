@@ -15,11 +15,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-DROP DATABASE IF EXISTS `DBECOMMERCE`;
+DROP DATABASE IF EXISTS `DBBICICLETA`;
 
-CREATE DATABASE `dbEcommerce`;
+CREATE DATABASE `dbBicicleta`;
 
-USE dbEcommerce;
+USE dbBicicleta;
 
 
 
@@ -68,12 +68,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tb_aluguel`;
 CREATE TABLE `tb_aluguel` (
-  `nr_aluguel` int(11) NOT NULL auto_increment,
+  `cd_aluguel` int(11) NOT NULL auto_increment,
   `cd_bicicleta` int(11) default NULL,
   `vl_diario` int(11) default NULL,
   `vl_mensal` int(11) default NULL,
   `vl_anual` int(11) default NULL,
-  PRIMARY KEY  (`nr_aluguel`),
+  PRIMARY KEY  (`cd_aluguel`),
   KEY `CustomerID` (`cd_bicicleta`),
   CONSTRAINT `fk_clientes` FOREIGN KEY (`cd_bicicleta`) REFERENCES `tb_bicicleta` (`cd_bicicleta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -82,10 +82,13 @@ CREATE TABLE `tb_aluguel` (
 
 /*!40000 ALTER TABLE `tb_aluguel` DISABLE KEYS */;
 LOCK TABLES `tb_aluguel` WRITE;
-INSERT INTO `tb_aluguel` VALUES (10248,1,2,10,50),(10249,2,2,10,50);
+INSERT INTO `tb_aluguel` VALUES (1,1,2,10,50),(1,2,2,10,50);
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `tb_aluguel` ENABLE KEYS */;
 
+select * from tb_cliente;
+select * from tb_bicicleta;
+select * from tb_aluguel;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

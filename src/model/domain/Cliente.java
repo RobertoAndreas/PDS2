@@ -1,45 +1,52 @@
 package model.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.transaction.Transactional;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
+@Transactional
 @XmlRootElement
 @Entity
-@Table(name="tb_cliente")
+@Table(name = "tb_cliente")
 public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="cd_cliente")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "cd_cliente")
 	private Integer codigo;
-	
-	@Column(name="nm_cliente")
+
+	@Column(name = "nm_cliente")
 	private String nome;
-	
-	@Column(name="ds_endereco")
+
+	@Column(name = "ds_endereco")
 	private String endereco;
-	
-	@Column(name="ds_cidade")
+
+	@Column(name = "ds_cidade")
 	private String cidade;
-	
-	@Column(name="ds_cep")
+
+	@Column(name = "ds_cep")
 	private String cep;
 
-	@Column(name="ds_pais")
+	@Column(name = "ds_pais")
 	private String pais;
-	
-	@Column(name="ds_telefone")
+
+	@Column(name = "ds_telefone")
 	private String telefone;
-	
+
+	@OneToMany(mappedBy = "cliente")
+	private List<Aluguel> alugueis;
 
 	public Cliente() {
 		super();
@@ -51,6 +58,15 @@ public class Cliente implements Serializable {
 
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
+	}
+
+	//@XmlTransient
+	public List<Aluguel> getAlugueis() {
+		return alugueis;
+	}
+
+	public void setAlugueis(List<Aluguel> alugueis) {
+		this.alugueis = alugueis;
 	}
 
 	public String getNome() {
@@ -101,7 +117,6 @@ public class Cliente implements Serializable {
 		this.telefone = telefone;
 	}
 
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -126,7 +141,5 @@ public class Cliente implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 
 }

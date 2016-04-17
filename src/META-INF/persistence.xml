@@ -6,7 +6,7 @@
 	<persistence-unit name="SistemaAlugaBicicletaPU">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-		<jta-data-source>java:jboss/datasources/ECOMMERCEDS</jta-data-source>
+		<jta-data-source>java:jboss/datasources/BICICLETADS</jta-data-source>
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />

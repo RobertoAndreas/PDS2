@@ -29,6 +29,8 @@ CREATE TABLE IF NOT EXISTS `tb_cliente` (
   PRIMARY KEY (`cd_cliente`))
 ENGINE = InnoDB;
 
+INSERT INTO `tb_cliente` VALUES (1,'Maria Anders','Obere Str. 57','Berlin','12209','Germany','030-0074321'),
+(2,'Ana Trujillo','Avda. de la Constituci√≥n 2222','MÈxico D.F.','05021','Mexico','(5) 555-4729');
 
 -- -----------------------------------------------------
 -- Table `mydb`.`tb_aluguel`
@@ -50,6 +52,8 @@ CREATE TABLE IF NOT EXISTS `tb_aluguel` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+INSERT INTO `tb_aluguel` VALUES (1,3.0,20.0,50.0,1),
+(2,3.0,20.0,50.0,2);
 
 -- -----------------------------------------------------
 -- Table `mydb`.`tb_bicicleta`
@@ -63,6 +67,7 @@ CREATE TABLE IF NOT EXISTS `tb_bicicleta` (
   PRIMARY KEY (`cd_bicicleta`))
 ENGINE = InnoDB;
 
+INSERT INTO `tb_bicicleta` VALUES (1,12,'Oxer'),(2,2,'Caloi');
 
 -- -----------------------------------------------------
 -- Table `mydb`.`tb_item_aluguel`

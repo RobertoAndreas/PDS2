@@ -60,7 +60,7 @@ public class Cliente implements Serializable {
 		this.codigo = codigo;
 	}
 
-	//@XmlTransient
+	@XmlTransient
 	public List<Aluguel> getAlugueis() {
 		return alugueis;
 	}

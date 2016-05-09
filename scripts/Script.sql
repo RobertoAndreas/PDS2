@@ -29,9 +29,8 @@ CREATE TABLE IF NOT EXISTS `tb_cliente` (
   PRIMARY KEY (`cd_cliente`))
 ENGINE = InnoDB;
 
-INSERT INTO `tb_cliente` VALUES (1,'Maria Anders','Obere Str. 57','Berlin','12209','Germany','030-0074321'),
-(2,'Ana Trujillo','Avda. de la ConstituciÃ³n 2222','México D.F.','05021','Mexico','(5) 555-4729');
-
+INSERT INTO `tb_cliente` VALUES (1,'38400-034','Uberlandia','Rua Elmiro Gonçalves','Roberto Andreas','Brasil','3234-0038'),
+(2,'38400-072','Sao Paulo','Rua 123','Maria ','Brasil','3235-0892');
 -- -----------------------------------------------------
 -- Table `mydb`.`tb_aluguel`
 -- -----------------------------------------------------
@@ -96,3 +95,23 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
+
+//////////////////////INSERTS ///////////////////
+
+
+
+create database dbBicicleta;
+use dbBicicleta;
+
+
+INSERT INTO `tb_cliente` VALUES (1,'38400-034','Uberlandia','Rua Elmiro Gonçalves','Roberto Andreas','Brasil','3234-0038'),
+(2,'38400-072','Sao Paulo','Rua 123','Maria ','Brasil','3235-0892');
+
+INSERT INTO `tb_aluguel` VALUES (1,50.0,3.0,20.0,1),
+(2,50.0,3.0,20.0,2);
+
+INSERT INTO `tb_bicicleta` VALUES (1,'Oxer',12),(2,'Caloi',2);
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="bicicletaModule">
+<head>
+<meta-charset="utf-8">
+<title>Bicicleta</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script src="js/angular.min.js"></script> <script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script> <script
+	src="control/bicicletaControl.js"></script>
+</head>
+<body ng-controller="bicicletaControl">
+	<div ng-include="'menu.html'"></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Cadastro de Bicicleta</div>
+		<div class="panel-body">
+			<div>
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active"><a href="#cadastro"
+						aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a>
+					</li>
+					<li role="presentation"><a href="#dados" aria-controls="dados"
+						role="tab" data-toggle="tab">Dados</a></li>
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="cadastro">
+						<br>
+						<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
+						<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
+						<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
+						<button type="button" class="btn btn-warning"
+							ng-click="pesquisar()">Pesquisar</button>
+						<hr />
+						<form>
+							<div class="form-group col-md-2">
+								<label for="exampleInputCodigo">Codigo</label> <input
+									type="number" disabled="true" class="form-control"
+									ng-model="bicicleta.codigo" placeholder="Codigo">
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="exampleInputNome">Marca</label> <input type="text"
+									class="form-control" ng-model="bicicleta.marca"
+									placeholder="Insira a Marca">
+							</div>
+
+
+							<div class="form-group col-md-6">
+								<label for="exampleInputEndereco">Quantidade Disponível</label>
+								<input type="text" class="form-control"
+									ng-model="bicicleta.quantidade" placeholder="Insira a Quantidade">
+							</div>
+
+
+
+						</form>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="dados">
+						<br> <input type="text" class="form-control"
+							ng-model="criterio" placeholder="O que voce esta procurando?" /><br>
+						<table class="table table-hover">
+							<th>Codigo</th>
+							<th>Marca</th>
+							<th>Quantidade</th>
+
+							<tr ng-repeat="bicicletaTabela in bicicletas | filter:criterio"
+								ng-click="seleciona(bicicletaTabela);">
+								<td>{{bicicletaTabela.codigo}}</td>
+								<td>{{bicicletaTabela.marca}}</td>
+								<td>{{bicicletaTabela.quantidade}}</td>
+								
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

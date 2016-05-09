@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html ng-app="aluguelModule">
+<head>
+<meta-charset="utf-8">
+<title>Aluguel</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script src="js/angular.min.js"></script> <script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script> <script
+	src="control/aluguelControl.js"></script>
+</head>
+<body ng-controller="aluguelControl">
+	<div ng-include="'menu.html'"></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Cadastro de Aluguéis</div>
+		<div class="panel-body">
+			<div>
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active"><a href="#cadastro"
+						aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a>
+					</li>
+					<li role="presentation"><a href="#dados" aria-controls="dados"
+						role="tab" data-toggle="tab">Dados</a></li>
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="cadastro">
+						<br>
+						<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
+						<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
+						<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
+						<button type="button" class="btn btn-warning"
+							ng-click="pesquisar()">Pesquisar</button>
+						<hr />
+						<form>
+							<div class="form-group col-md-2">
+								<label for="exampleInputCodigo">Codigo</label> <input
+									type="number" disabled="true" class="form-control"
+									ng-model="aluguel.codigo" placeholder="Codigo">
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="exampleInputEndereco">Valor Anual</label> <input type="text"
+									class="form-control" ng-model="aluguel.nome"
+									placeholder="Insira o Valor Anual do Aluguel">
+							</div>
+
+
+							<div class="form-group col-md-6">
+								<label for="exampleInputEndereco">Valor Diário</label> <input
+									type="text" class="form-control" ng-model="aluguel.endereco"
+									placeholder="Insira o Valor Diário do Aluguel">
+							</div>
+
+							<div class="form-group col-md-4">
+								<label for="exampleInputCidade">Valor Mensal</label> <input
+									type="text" class="form-control" ng-model="aluguel.cidade"
+									placeholder="Insira o Valor Mensal do Aluguel">
+							</div>
+
+							<div class="form-group col-md-2">
+								<label for="exampleInputCep">Código do Cliente</label> <input type="text"
+									type="number" disabled="true" class="form-control"
+									ng-model="aluguel.cliente.codigo" placeholder="Codigo do Cliente">
+							</div>
+
+							
+
+
+						</form>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="dados">
+						<br> <input type="text" class="form-control"
+							ng-model="criterio" placeholder="O que voce esta procurando?" /><br>
+						<table class="table table-hover">
+							<th>Codigo</th>
+							<th>Valor Anual</th>
+							<th>Valor Diário</th>
+							<th>Valor Mensal</th>
+							<th>Código do Cliente</th>
+							
+
+							<tr ng-repeat="aluguelTabela in alugueis | filter:criterio"
+								ng-click="seleciona(aluguelTabela);">
+								<td>{{aluguelTabela.codigo}}</td>
+								<td>{{aluguelTabela.anual}}</td>
+								<td>{{aluguelTabela.diario}}</td>
+								<td>{{aluguelTabela.mensal}}</td>
+								<td>{{aluguelTabela.cliente.codigo}}</td>
+
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -41,7 +41,7 @@ app.controller('aluguelControl',function($scope,$http){
 			alert('Selecione um Aluguel');
 		} else {
 			urlExcluir = url+'/'+$scope.aluguel.codigo;
-			$http,delete(urlExcluir).success(function () {
+			$http.delete(urlExcluir).success(function () {
 				$scope.pesquisar();
 				$scope.novo();
 			}).error(function (erro) {

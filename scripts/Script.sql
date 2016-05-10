@@ -1,5 +1,26 @@
--- MySQL Workbench Forward Engineering
+//////////////////////INSERTS ///////////////////
 
+
+
+create database dbBicicleta;
+use dbBicicleta;
+
+
+INSERT INTO `tb_cliente` VALUES (1,'38400-034','Uberlandia','Rua Elmiro Gonçalves','Roberto Andreas','Brasil','3234-0038'),
+(2,'38400-072','Sao Paulo','Rua 123','Maria ','Brasil','3235-0892');
+
+INSERT INTO `tb_aluguel` VALUES (1,50.0,3.0,20.0,1),
+(2,50.0,3.0,20.0,2);
+
+INSERT INTO `tb_bicicleta` VALUES (1,'Oxer',12),(2,'Caloi',2);
+
+
+
+
+
+
+-- MySQL Workbench Forward Engineering
+/*
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
@@ -96,22 +117,6 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+*/
 
-
-
-//////////////////////INSERTS ///////////////////
-
-
-
-create database dbBicicleta;
-use dbBicicleta;
-
-
-INSERT INTO `tb_cliente` VALUES (1,'38400-034','Uberlandia','Rua Elmiro Gonçalves','Roberto Andreas','Brasil','3234-0038'),
-(2,'38400-072','Sao Paulo','Rua 123','Maria ','Brasil','3235-0892');
-
-INSERT INTO `tb_aluguel` VALUES (1,50.0,3.0,20.0,1),
-(2,50.0,3.0,20.0,2);
-
-INSERT INTO `tb_bicicleta` VALUES (1,'Oxer',12),(2,'Caloi',2);
 

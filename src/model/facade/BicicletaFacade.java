@@ -2,6 +2,9 @@ package model.facade;
 
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.executable.ValidateOnExecution;
+
 import model.domain.Bicicleta;
 
 public interface BicicletaFacade {
@@ -10,7 +13,8 @@ public interface BicicletaFacade {
 
 	List<Bicicleta> getBicicletas(Integer codigo);
 
-	Bicicleta salvar(Bicicleta bicicleta);
+	@ValidateOnExecution
+	Bicicleta salvar(@Valid Bicicleta bicicleta);
 
 	void atualizar(Bicicleta bicicleta);
 

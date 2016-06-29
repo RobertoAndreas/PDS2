@@ -3,14 +3,20 @@ package model.domain;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -27,25 +33,36 @@ public class Cliente implements Serializable {
 	@Column(name = "cd_cliente")
 	private Integer codigo;
 
+	@Size(min=10,message="Nome do cliente precisa ter pelo menos 10 caracteres")
+	@NotNull(message="O campo nome é obrigatório")
 	@Column(name = "nm_cliente")
 	private String nome;
 
+	@Size(min=10,message="O endereço precisa ter pelo menos 10 caracteres")
+	@NotNull(message="O campo endereço é obrigatório")
 	@Column(name = "ds_endereco")
 	private String endereco;
 
+	@NotNull(message="O campo cidade é obrigatório")
 	@Column(name = "ds_cidade")
 	private String cidade;
 
+	@NotNull(message="O campo cep é obrigatório")
+	@Pattern(regexp="\\d{5}-\\d{3}",message="Campo CEP precisa estar no padrão 00000-000")
 	@Column(name = "ds_cep")
 	private String cep;
 
+	
+	@NotNull(message="O campo país é obrigatório")
 	@Column(name = "ds_pais")
 	private String pais;
 
+	@NotNull(message="O campo telefone é obrigatório")
+	@Pattern(regexp="\\d{4}-\\d{4}",message="Telefone precisa estar no padrão 0000-0000")
 	@Column(name = "ds_telefone")
 	private String telefone;
 
-	@OneToMany(mappedBy = "cliente")
+	@OneToMany(mappedBy = "cliente",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<Aluguel> alugueis;
 
 	public Cliente() {

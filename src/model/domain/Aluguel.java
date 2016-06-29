@@ -15,6 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -41,12 +43,15 @@ public class Aluguel implements Serializable {
 			   inverseJoinColumns= @JoinColumn(name="cd_bicicleta"))
 	private List<Bicicleta> bicicletas;
 
+	@NotNull(message="O campo valor diário é obrigatório")
 	@Column(name = "vl_diario")
 	private String diario;
 
+	@NotNull(message="O campo valor mensal é obrigatório")
 	@Column(name = "vl_mensal")
 	private String mensal;
 
+	@NotNull(message="O campo valor anual é obrigatório")
 	@Column(name = "vl_anual")
 	private String anual;
 

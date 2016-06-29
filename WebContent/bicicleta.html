@@ -6,12 +6,15 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script src="js/angular.min.js"></script> <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script> <script
-	src="control/bicicletaControl.js"></script>
+	src="control/bicicletaControl.js"></script> <script
+	src="js/ui-bootstrap-tpls-0.14.1.min.js"></script>
 </head>
 <body ng-controller="bicicletaControl">
 	<div ng-include="'menu.html'"></div>
 	<div class="panel panel-default">
-		<div class="panel-heading">Cadastro de Bicicleta</div>
+
+
+		<div class="panel-heading">Cadastro de bicicleta</div>
 		<div class="panel-body">
 			<div>
 				<!-- Nav tabs -->
@@ -25,35 +28,42 @@
 				<!-- Tab panes -->
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="cadastro">
-						<br>
-						<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
-						<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
-						<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
-						<button type="button" class="btn btn-warning"
-							ng-click="pesquisar()">Pesquisar</button>
-						<hr />
-						<form>
+						<form name="bicicletaForm" class="css-form"
+							ng-submit="bicicletaForm.$valid && salvar()" novalidate>
+
+							<br> <span ng-repeat="mensagem in mensagens">{{mensagem}}<br></span>
+							<div ng-show="bicicletaForm.$submitted">
+								<div ng-show="bicicletaForm.marca.$error.required">O nome
+									da Marca deve ser preenchido</div>
+								<div ng-show="bicicletaForm.quantidade.$error.required">A
+									quantidade deve ser preenchida.</div>
+
+							</div>
+							<br>
+							<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
+							<button type="submit" class="btn btn-success">Salvar</button>
+							<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
+							<button type="button" class="btn btn-warning"
+								ng-click="pesquisar()">Pesquisar</button>
+							<hr />
 							<div class="form-group col-md-2">
 								<label for="exampleInputCodigo">Codigo</label> <input
 									type="number" disabled="true" class="form-control"
-									ng-model="bicicleta.codigo" placeholder="Codigo">
+									ng-model=bicicleta.codigo placeholder="Codigo">
 							</div>
 
-							<div class="form-group col-md-6">
+							<div class="form-group col-md-4">
 								<label for="exampleInputNome">Marca</label> <input type="text"
-									class="form-control" ng-model="bicicleta.marca"
-									placeholder="Insira a Marca">
+									class="form-control" ng-model="bicicleta.marca" name="marca"
+									placeholder="Insira a Marca" required="">
 							</div>
 
-
-							<div class="form-group col-md-6">
+							<div class="form-group col-md-2">
 								<label for="exampleInputEndereco">Quantidade Disponível</label>
 								<input type="text" class="form-control"
-									ng-model="bicicleta.quantidade" placeholder="Insira a Quantidade">
+									ng-model="bicicleta.quantidade" name="quantidade"
+									placeholder="Insira a Quantidade" required="">
 							</div>
-
-
-
 						</form>
 					</div>
 					<div role="tabpanel" class="tab-pane" id="dados">
@@ -69,7 +79,7 @@
 								<td>{{bicicletaTabela.codigo}}</td>
 								<td>{{bicicletaTabela.marca}}</td>
 								<td>{{bicicletaTabela.quantidade}}</td>
-								
+
 							</tr>
 						</table>
 					</div>

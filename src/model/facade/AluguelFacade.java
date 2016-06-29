@@ -2,6 +2,9 @@ package model.facade;
 
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.executable.ValidateOnExecution;
+
 import model.domain.Aluguel;
 
 public interface AluguelFacade {
@@ -10,7 +13,8 @@ public interface AluguelFacade {
 
 	List<Aluguel> getAlugueis(Integer codigo);
 
-	Aluguel salvar(Aluguel aluguel);
+	@ValidateOnExecution
+	Aluguel salvar(@Valid Aluguel aluguel);
 
 	void atualizar(Aluguel aluguel);
 

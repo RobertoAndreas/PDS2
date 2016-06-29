@@ -18,20 +18,23 @@ app.controller('bicicletaControl',function($scope,$http){
 		$scope.bicicleta = {};
 	}
 
-    $scope.salvar = function() {
-		if ($scope.bicicleta.codigo == '') {
-			$http.post(url,$scope.bicicleta).success(function(bicicleta) {
-				$scope.bicicletas.push($scope.bicicleta);
+	$scope.salvar = function() {    	
+    	if ($scope.bicicleta.codigo == undefined || $scope.bicicleta.codigo == '') {    		
+			$http.post(url,$scope.bicicleta).success(function(bicicletaRetornado) {
+				$scope.bicicletas.push(bicicletaRetornado);
 				$scope.novo();
+				$scope.mensagens.push('Bicicleta salva com sucesso');
 			}).error(function (erro) {
-				alert(erro);
+				//$scope.mensagens.push('Erro ao salvar bicicleta: '+JSON.stringify(erro));
+				$scope.montaMensagemErro(erro.parameterViolations);
 			});
 		} else {
 			$http.put(url,$scope.bicicleta).success(function(bicicleta) {
 				$scope.pesquisar();
 				$scope.novo();
+				$scope.mensagens.push('Bicicleta atualizada com sucesso');
 			}).error(function (erro) {
-				alert(erro);
+				$scope.montaMensagemErro(erro.parameterViolations);
 			});
 		}		
 	}

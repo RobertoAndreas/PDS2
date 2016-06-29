@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Transactional
@@ -28,9 +30,11 @@ public class Bicicleta implements Serializable {
 	@Column(name = "cd_bicicleta")
 	private Integer codigo;
 
+	@NotNull(message="A quantidade deve ser preenchida.")
 	@Column(name = "qt_disponivel")
 	private Integer quantidade;
 
+	@NotNull(message="O campo marca é obrigatório")
 	@Column(name = "ds_marca")
 	private String marca;
 

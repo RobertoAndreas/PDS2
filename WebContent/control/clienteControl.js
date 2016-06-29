@@ -9,6 +9,7 @@ app.controller('clienteControl',function($scope,$http){
 			$scope.clientes = clientesRetorno;
 		}).error(function(mensagemErro) {
 			alert(mensagemErro);
+			$scope.mensagens.push('Erro ao pesquisar clientes '+mensagemErro);
 		});   
 	}
 	
@@ -19,19 +20,25 @@ app.controller('clienteControl',function($scope,$http){
 	}
 
     $scope.salvar = function() {
-		if ($scope.cliente.codigo == '') {
-			$http.post(url,$scope.cliente).success(function(cliente) {
+		if ($scope.cliente.codigo == '' || $scope.cliente.codigo == undefined) {
+			$http.post(url, $scope.cliente).success(function(cliente) {
 				$scope.clientes.push($scope.cliente);
 				$scope.novo();
+				$scope.mensagens.push('Cliente salvo com sucesso!');
+				$scope.$parent.alerts.push({type: 'success', msg: 'Saved!'});
 			}).error(function (erro) {
-				alert(erro);
+				// alert(erro);
+				$scope.montaMensagemErro(erro.parameterViolations);
 			});
 		} else {
 			$http.put(url,$scope.cliente).success(function(cliente) {
 				$scope.pesquisar();
 				$scope.novo();
+				$scope.mensagens.push('Cliente atualizado com sucesso!');
+				$scope.$parent.alerts.push({type: 'success', msg: 'Updated!'});
 			}).error(function (erro) {
-				alert(erro);
+				$scope.montaMensagemErro(erro.parameterViolations);
+				$scope.$parent.alerts.push({type: 'danger', msg: 'Server: '+error.statusText});
 			});
 		}		
 	}
@@ -44,8 +51,10 @@ app.controller('clienteControl',function($scope,$http){
 			$http.delete(urlExcluir).success(function () {
 				$scope.pesquisar();
 				$scope.novo();
+				$scope.mensagens.push('Cliente excluído com sucesso');
 			}).error(function (erro) {
 				alert(erro);
+				$scope.mensagens.push('Erro ao excluir cliente: '+erro);
 			});
 		}
 	}
@@ -53,4 +62,5 @@ app.controller('clienteControl',function($scope,$http){
 	$scope.seleciona = function(clienteTabela) {
 		$scope.cliente = clienteTabela;
 	}
+	
 });

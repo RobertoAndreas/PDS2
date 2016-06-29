@@ -17,8 +17,16 @@ app.controller('clienteControl',function($scope,$http){
 	
 	$scope.novo = function(){
 		$scope.cliente = {};
+	    $scope.mensagens = [];
 	}
 
+	$scope.montaMensagemErro = function(listaErro) {
+		$scope.mensagens = [];
+		$scope.mensagens.push('Falha de validação retornada do servidor');
+		angular.forEach(listaErro, function(value, key){
+			 $scope.mensagens.push(value.message);
+		});
+	}
     $scope.salvar = function() {
 		if ($scope.cliente.codigo == '' || $scope.cliente.codigo == undefined) {
 			$http.post(url, $scope.cliente).success(function(cliente) {
